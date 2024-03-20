@@ -15,6 +15,32 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
+    if(ageInput.value === ""){
+        alert("Por favor, digite sua idade.");
+        return;
+    }
+
+    if(salaryInput.value === ""){
+        alert("Por favor, digite seu salário.");
+        return;
+    }
+
+    if(addressInput.value === "" || !isAddressValid(addressInput.value)){
+        alert("Por favor, digite seu endereço utilizando apenas letras.");
+        return;
+    }  
+
+    if(numberInput.value === "") {
+        alert("Por favor, digite o número do seu endereço.");
+        return;
+    }
+
+    if(cityInput.value === "" || !isCityValid (cityInput.value)){
+        alert("Por favor, digite sua cidade somente com letras.");
+        return;
+    }
+
+
     form.submit();
 })
 
@@ -24,6 +50,28 @@ function isNameValid(name) {
     );
 
     if(nameRegex.test(name)) {
+        return true;
+    }
+    return false;
+}
+
+function isAddressValid(address) {
+    const addressRegex = new RegExp(
+        /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{2,20}$/
+    );
+
+    if(addressRegex.test(address)) {
+        return true;
+    }
+    return false;
+}
+
+function isCityValid(city) {
+    const cityRegex = new RegExp(
+        /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{2,20}$/
+    );
+
+    if(cityRegex.test(city)) {
         return true;
     }
     return false;
